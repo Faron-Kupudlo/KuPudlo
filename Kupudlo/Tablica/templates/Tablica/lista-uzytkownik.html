@@ -1,0 +1,43 @@
+{% extends "Tablica/base.html" %}
+
+{% block body %}
+    <body style="background-color:#ffffff">
+    {% for ogloszenie in ogloszenie %}
+        <article class="media content-section">
+          <img class="rounded-circle article-img" src="{{ ogloszenie.autor.profile.image.url }}">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{% url 'profil-ogloszenia' ogloszenie.autor.username %}">{{ogloszenie.autor}}</a>
+              <small class="text-muted">{{ ogloszenie.data_dodania|date:"d.m.o" }}</small>
+            </div>
+            <h2><a class="article-title" href="{% url 'ogloszenie-detal' ogloszenie.id %}">{{ ogloszenie.nazwa_opakowania }}</a></h2>
+            <p class="article-content"><b>Termin dostawy: </b>{{ogloszenie.termin_dostawy|date:"d.m.o"}}</p>
+            <p class="article-content"><b>Konstrukcja: </b>{{ogloszenie.get_konstrukcja_display}}</p>
+            <p class="article-content"><b>Nadruk: </b>{{ogloszenie.get_typ_nadruku_display}}</p>
+            <p class="article-content"><b>Ilość: </b>{{ogloszenie.ilość}}</p>
+          </div>
+        </article>
+    {% endfor %}
+    {% if is_paginated %}
+
+      {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1"> << </a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}"> < </a>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-5' and num < page_obj.number|add:'5' %}
+          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}"> > </a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}"> >> </a>
+      {% endif %}
+
+    {% endif %}
+
+{% endblock %}

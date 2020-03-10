@@ -1,0 +1,22 @@
+{% extends "Tablica/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+
+
+    <div class="ml-2">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Czy chcesz usunąć ogłoszenie?</legend>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-danger" type="submit">Tak</button>
+                <a class="btn btn-outline-secondary" href="{% url 'ogloszenie-detal' object.id %}" type="submit">Anuluj</a>
+            </div>
+        </form>
+    </div>
+
+
+
+{% endblock %}
