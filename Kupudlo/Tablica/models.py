@@ -13,7 +13,6 @@ class ogloszenie(models.Model):
     termin_dostawy = models.DateTimeField(default="")
     ilość = models.IntegerField(default=0, validators=[MaxValueValidator(1000000), MinValueValidator(0)])
 
-
     treść = models.TextField(blank=True)
 
     #informacje o opakowaniu
@@ -36,7 +35,6 @@ class ogloszenie(models.Model):
         flexo = "fl",_('Flexo')
         offset = "of",_('Offset')
 
-
     typ_nadruku = models.CharField(max_length=2, choices=nadruk.choices, default=nadruk.bez_nadruku)
 
     LICZBA_KOLOROW = [
@@ -48,7 +46,7 @@ class ogloszenie(models.Model):
         ('5', '5')
     ]
     ilość_kolorów = models.CharField(max_length=30, choices=LICZBA_KOLOROW, default='0', blank=True)
-    powierzchnia_zadruku = models.IntegerField(validators=[MaxValueValidator(100), MinValueValidator(0)], blank=True)
+    powierzchnia_zadruku = models.IntegerField('Powierzchnia zadruku [%]', validators=[MaxValueValidator(100), MinValueValidator(0)], null=True, blank=True)
     #logistyka
     # miejsce dostawy
 
@@ -79,8 +77,6 @@ class ogloszenie(models.Model):
         Paleta_jednorazowa = "PJ", _('Paleta jednorazowa')
 
     Paleta = models.CharField(max_length=100, choices=palety.choices, default=palety.Euro_paleta)
-
-
 
     def __str__(self):
         return self.nazwa

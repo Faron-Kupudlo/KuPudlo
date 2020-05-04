@@ -25,10 +25,10 @@ class ogloszenieListView(ListView):         #View strony głównej, używamy wbu
 
 
 
-    def get_context_data(self, **kwargs):                   #moduł filtrów
-        context = super().get_context_data(**kwargs)
-        context['filter'] = ogloszenieFilter(self.request.GET, queryset=self.get_queryset())
-        return context
+    # def get_context_data(self, **kwargs):                   #moduł filtrów
+    #     context = super().get_context_data(**kwargs)
+    #     context['filter'] = ogloszenieFilter(self.request.GET, queryset=self.get_queryset())
+    #     return context
 
 class UserogloszenieListView(ListView):    #podobnie jak View dla wyświetlania z tą różnicą, że dla jednego użytkownika
     model = ogloszenie
