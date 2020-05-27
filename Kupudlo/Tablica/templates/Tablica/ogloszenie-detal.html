@@ -2,24 +2,29 @@
 
 {% block body %}
 
-        <article class="media content-section">
-          <img class="rounded-circle article-img" src="{{ object.autor.profile.image.url }}">
-          <div class="media-body">
-            <div class="article-metadata">
-              <a class="mr-2" href="#">{{object.autor}}</a>
-              <small class="text-muted">{{ object.data_dodania|date:"d.m.o" }}</small>
-            </div>
-            <h2 class="article-title">{{ object.nazwa_opakowania }}</h2>
-            <p class="article-content"><b>Opis opakowania:</b> {{object.treść}}</p>
-            <p class="article-content"><b>Termin dostawy:</b> {{object.termin_dostawy|date:"d.m.o"}}</p>
-            <p class="article-content"><b>Konstrukcja: </b>{{object.get_konstrukcja_display}}</p>
-            <p class="article-content"><b>Nadruk: </b>{{object.get_typ_nadruku_display}}</p>
-            <p class="article-content"><b>Ilość Kolorów: </b>{{object.get_ilość_kolorów_display}}</p>
-            <p class="article-content"><b>Powierzchnia zadruku [%]: </b>{{object.powierzchnia_zadruku}}</p>
-            <p class="article-content"><b>Ilość [szt.]: </b>{{object.ilość}}</p>
 
-          </div>
-        </article>
+<article class="media content-section">
+  <img class="rounded-circle article-img" src="{{ ogloszenie.autor.profile.image.url }}">
+  <div class="media-body">
+    <h2><a class="article-title" href="{% url 'ogloszenie-detal' ogloszenie.id %}">
+      {{ ogloszenie.nazwa_opakowania }}
+    </a></h2>
+    <div class="article-metadata">
+      <a class="mr-2" href="{% url 'profil-ogloszenia' ogloszenie.autor.username %}">{{ogloszenie.autor}}</a>
+      <small class="text-muted">{{ ogloszenie.data_dodania|date:"d.m.o" }}</small>
+    </div>
+
+
+    <p class="article-content">
+      <b>Termin dostawy: </b>{{ogloszenie.termin_dostawy|date:"d.m.o"}}
+      <b>Konstrukcja: </b>{{ogloszenie.get_konstrukcja_display}}
+      <b>Nadruk: </b>{{ogloszenie.get_typ_nadruku_display}}
+      <b>Ilość: </b>{{ogloszenie.ilość}}
+      <b>Opis opakowania:</b> {{object.treść}}
+      <b>Ilość Kolorów: </b>{{object.get_ilość_kolorów_display}}
+      <b>Powierzchnia zadruku [%]: </b>{{object.powierzchnia_zadruku}}
+    </p>
+  </div>
+</article>
 
 {% endblock %}
-

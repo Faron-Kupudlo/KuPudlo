@@ -79,7 +79,7 @@ class ogloszenie(models.Model):
     Paleta = models.CharField(max_length=100, choices=palety.choices, default=palety.Euro_paleta)
 
     def __str__(self):
-        return self.nazwa
+        return self.nazwa_opakowania
 
     def get_absolute_url(self):
         return reverse('ogloszenie-detal', kwargs={'pk': self.pk})

@@ -3,7 +3,7 @@
 
 {% block filter %}
 <h4>Filtruj wyniki</h4>
-<div class="content-section">
+<div class="right-panel-nav">
     <form method="GET">
         {{ filter.form|crispy }}
         <button class="btn btn-outline-info" type="submit">Filtruj</button>
@@ -14,23 +14,31 @@
 
 
 
-    <body style="background-color:#ffffff">
+    <body>
     {% for ogloszenie in ogloszenie %}
         <article class="media content-section">
           <img class="rounded-circle article-img" src="{{ ogloszenie.autor.profile.image.url }}">
           <div class="media-body">
+            <h2><a class="article-title" href="{% url 'ogloszenie-detal' ogloszenie.id %}">
+                {{ ogloszenie.nazwa_opakowania }}
+            </a></h2>
             <div class="article-metadata">
+
               <a class="mr-2" href="{% url 'profil-ogloszenia' ogloszenie.autor.username %}">{{ogloszenie.autor}}</a>
               <small class="text-muted">{{ ogloszenie.data_dodania|date:"d.m.o" }}</small>
             </div>
-            <h2><a class="article-title" href="{% url 'ogloszenie-detal' ogloszenie.id %}">{{ ogloszenie.nazwa_opakowania }}</a></h2>
-            <p class="article-content"><b>Termin dostawy: </b>{{ogloszenie.termin_dostawy|date:"d.m.o"}}</p>
-            <p class="article-content"><b>Konstrukcja: </b>{{ogloszenie.get_konstrukcja_display}}</p>
-            <p class="article-content"><b>Nadruk: </b>{{ogloszenie.get_typ_nadruku_display}}</p>
-            <p class="article-content"><b>Ilość: </b>{{ogloszenie.ilość}}</p>
+
+
+            <p class="article-content">
+                <b>Termin dostawy: </b>{{ogloszenie.termin_dostawy|date:"d.m.o"}}
+                <b>Konstrukcja: </b>{{ogloszenie.get_konstrukcja_display}}
+                <b>Nadruk: </b>{{ogloszenie.get_typ_nadruku_display}}
+                <b>Ilość: </b>{{ogloszenie.ilość}}
+            </p>
           </div>
         </article>
     {% endfor %}
+
     {% if is_paginated %}
 
       {% if page_obj.has_previous %}
