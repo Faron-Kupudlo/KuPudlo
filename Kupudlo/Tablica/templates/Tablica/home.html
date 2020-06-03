@@ -10,11 +10,9 @@
     </form>
 </div>
 {% endblock %}
+
 {% block body %}
 
-
-
-    <body>
     {% for ogloszenie in ogloszenie %}
         <article class="media content-section">
           <img class="rounded-circle article-img" src="{{ ogloszenie.autor.profile.image.url }}">
@@ -25,11 +23,13 @@
             <div class="article-metadata">
 
               <a class="mr-2" href="{% url 'profil-ogloszenia' ogloszenie.autor.username %}">{{ogloszenie.autor}}</a>
-              <small class="text-muted">{{ ogloszenie.data_dodania|date:"d.m.o" }}</small>
+              <small class="text-muted">
+                  {{ ogloszenie.data_dodania|date:"d.m.o" }}
+              </small>
             </div>
 
-
             <p class="article-content">
+                <b>Województwo: </b>{{ ogloszenie.get_województwo_display }}
                 <b>Termin dostawy: </b>{{ogloszenie.termin_dostawy|date:"d.m.o"}}
                 <b>Konstrukcja: </b>{{ogloszenie.get_konstrukcja_display}}
                 <b>Nadruk: </b>{{ogloszenie.get_typ_nadruku_display}}

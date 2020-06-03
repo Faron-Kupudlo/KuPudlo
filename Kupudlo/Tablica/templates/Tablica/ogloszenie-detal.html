@@ -15,7 +15,7 @@
     </div>
 
 
-    <p class="article-content">
+    <div class="article-content">
       <b>Termin dostawy: </b>{{ogloszenie.termin_dostawy|date:"d.m.o"}}
       <b>Konstrukcja: </b>{{ogloszenie.get_konstrukcja_display}}
       <b>Nadruk: </b>{{ogloszenie.get_typ_nadruku_display}}
@@ -23,7 +23,11 @@
       <b>Opis opakowania:</b> {{object.treść}}
       <b>Ilość Kolorów: </b>{{object.get_ilość_kolorów_display}}
       <b>Powierzchnia zadruku [%]: </b>{{object.powierzchnia_zadruku}}
-    </p>
+    </div>
+    <div class="article-content-location">
+      <b>Województwo: </b>{{ogloszenie.get_województwo_display}}
+      <b>Miasto: </b>{{ogloszenie.get_miejscowość_display}}
+    </div>
   </div>
 </article>
 

@@ -4,14 +4,17 @@
 {% block body %}
 
 
-<h4>
-    Dodawanie nowego ogłoszenia
-</h4>
+
 <div class="new-post">
-    
+    <h4 class="main-tittle">
+        Dodawanie nowego ogłoszenia
+    </h4>
+
     {{ form.nazwa_opakowania|as_crispy_field }}
     {{ form.termin_dostawy|as_crispy_field }}
     {{ form.ilość|as_crispy_field }}
+    {{ form.województwo|as_crispy_field }}
+    {{ form.miejscowość|as_crispy_field }}
     {{ form.długość_mm|as_crispy_field }}
     {{ form.szerokość_mm|as_crispy_field }}
     {{ form.wysokość_mm|as_crispy_field }}
@@ -19,10 +22,11 @@
     {{ form.typ_nadruku|as_crispy_field }}
     {{ form.ilość_kolorów|as_crispy_field }}
     {{ form.powierzchnia_zadruku|as_crispy_field }}
-    {{ form.województwo|as_crispy_field }}
-    {{ form.miejscowość|as_crispy_field }}
     {{ form.Paleta|as_crispy_field }}
     {{ form.treść|as_crispy_field }}
+
+
+
 </div>
 
 
