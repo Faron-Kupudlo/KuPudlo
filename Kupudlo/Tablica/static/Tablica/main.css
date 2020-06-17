@@ -13,6 +13,7 @@ html {
 
 body {
   margin:0px;
+  margin-bottom: 30px;
   background: #fafafa;
   color: var(--DarkFontColor);
 }
@@ -71,7 +72,7 @@ li {
     border-radius: 3px;
     width: 22vw;
     position: fixed;
-    right: 10vw;
+    left: 70vw;
     top: calc(70px + 5vh);
 }
 
@@ -191,4 +192,22 @@ a.article-title:hover {
 .main-tittle {
     text-align: center;
     line-height: 2rem;
+}
+
+.request-progress {
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
+}
+
+.in-progress {
+    color: var(--mainColor);
+}
+
+.done {
+    color: #008080;
+}
+
+.todo {
+    color: #a4bfbf;
 }

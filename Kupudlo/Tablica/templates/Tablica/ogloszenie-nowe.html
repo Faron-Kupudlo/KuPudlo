@@ -9,24 +9,69 @@
     <h4 class="main-tittle">
         Dodawanie nowego ogłoszenia
     </h4>
-
-    {{ form.nazwa_opakowania|as_crispy_field }}
-    {{ form.termin_dostawy|as_crispy_field }}
-    {{ form.ilość|as_crispy_field }}
-    {{ form.województwo|as_crispy_field }}
-    {{ form.miejscowość|as_crispy_field }}
-    {{ form.długość_mm|as_crispy_field }}
-    {{ form.szerokość_mm|as_crispy_field }}
-    {{ form.wysokość_mm|as_crispy_field }}
-    {{ form.konstrukcja|as_crispy_field }}
-    {{ form.typ_nadruku|as_crispy_field }}
-    {{ form.ilość_kolorów|as_crispy_field }}
-    {{ form.powierzchnia_zadruku|as_crispy_field }}
-    {{ form.Paleta|as_crispy_field }}
-    {{ form.treść|as_crispy_field }}
-
-
-
+    <form method="POST">
+        {% csrf_token %}
+    <div id="carouselExampleFade" class="carousel carousel-fade" data-ride="carousel" data-interval="500000000000">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="request-progress">
+                <i class="fas fa-info in-progress"></i>
+                <i class="fas fa-long-arrow-alt-right todo"></i>
+                <i class="fas fa-box-open todo"></i>
+                <i class="fas fa-long-arrow-alt-right todo"></i>
+                <i class="fas fa-truck todo"></i>
+            </div>
+            {{ form.nazwa_opakowania|as_crispy_field }}
+            {{ form.termin_dostawy|as_crispy_field }}
+            {{ form.ilość|as_crispy_field }}
+            {{ form.województwo|as_crispy_field }}
+            {{ form.miejscowość|as_crispy_field }}
+            <a href="#carouselExampleFade" role="button" data-slide="next">
+                <button class="btn btn-outline-info">Dalej</button>
+            </a>
+        </div>
+        <div class="carousel-item">
+            <div class="request-progress">
+                <i class="fas fa-info done"></i>
+                <i class="fas fa-long-arrow-alt-right done"></i>
+                <i class="fas fa-box-open in-progress"></i>
+                <i class="fas fa-long-arrow-alt-right todo"></i>
+                <i class="fas fa-truck todo"></i>
+            </div>
+            {{ form.długość_mm|as_crispy_field }}
+            {{ form.szerokość_mm|as_crispy_field }}
+            {{ form.wysokość_mm|as_crispy_field }}
+            {{ form.konstrukcja|as_crispy_field }}
+            {{ form.typ_nadruku|as_crispy_field }}
+            {{ form.ilość_kolorów|as_crispy_field }}
+            {{ form.powierzchnia_zadruku|as_crispy_field }}
+            <a href="#carouselExampleFade" role="button" data-slide="prev">
+                <button class="btn btn-outline-info">Wstecz</button>
+            </a>
+            <a href="#carouselExampleFade" role="button" data-slide="next">
+                <button class="btn btn-outline-info">Dalej</button>
+            </a>
+        </div>
+        <div class="carousel-item">
+            <div class="request-progress">
+                <i class="fas fa-info done"></i>
+                <i class="fas fa-long-arrow-alt-right done"></i>
+                <i class="fas fa-box-open done"></i>
+                <i class="fas fa-long-arrow-alt-right done"></i>
+                <i class="fas fa-truck in-progress"></i>
+            </div>
+            {{ form.Paleta|as_crispy_field }}
+            {{ form.treść|as_crispy_field }}
+            <a href="#carouselExampleFade" role="button" data-slide="prev">
+                <button class="btn btn-outline-info">Wstecz</button>
+            </a>
+            <button class="btn btn-outline-info" type="submit">
+                Dodaj ogłoszenie
+            </button>
+        </div>
+      </div>
+    </div>
+    </form>
 </div>
 
 
