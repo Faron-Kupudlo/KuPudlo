@@ -22,10 +22,13 @@
                 <i class="fas fa-truck todo"></i>
             </div>
             {{ form.nazwa_opakowania|as_crispy_field }}
-            {{ form.termin_dostawy|as_crispy_field }}
+            Termin dostawy*
+            <input id="datepicker" width="276" value="{{ termin_dostawy }}" />
+            <script>
+                $('#datepicker').datepicker();
+            </script>
             {{ form.ilość|as_crispy_field }}
-            {{ form.województwo|as_crispy_field }}
-            {{ form.miejscowość|as_crispy_field }}
+
             <a href="#carouselExampleFade" role="button" data-slide="next">
                 <button class="btn btn-outline-info">Dalej</button>
             </a>
@@ -60,6 +63,8 @@
                 <i class="fas fa-long-arrow-alt-right done"></i>
                 <i class="fas fa-truck in-progress"></i>
             </div>
+            {{ form.województwo|as_crispy_field }}
+            {{ form.miejscowość|as_crispy_field }}
             {{ form.Paleta|as_crispy_field }}
             {{ form.treść|as_crispy_field }}
             <a href="#carouselExampleFade" role="button" data-slide="prev">

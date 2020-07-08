@@ -17,9 +17,9 @@ class ogloszenie(models.Model):
 
     #informacje o opakowaniu
 
-    długość_mm = models.PositiveSmallIntegerField(null=True, blank=True)
-    szerokość_mm = models.PositiveSmallIntegerField(null=True, blank=True)
-    wysokość_mm = models.PositiveSmallIntegerField(null=True, blank=True)
+    długość_mm = models.PositiveSmallIntegerField('długość [mm]', null=True, blank=True)
+    szerokość_mm = models.PositiveSmallIntegerField('szerokość [mm]', null=True, blank=True)
+    wysokość_mm = models.PositiveSmallIntegerField('wysokość [mm]', null=True, blank=True)
 
     class konstrukcje (models.TextChoices):
         fefco_201 = "aa", _('Fefco 201 (klapówka)')
