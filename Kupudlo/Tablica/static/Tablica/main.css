@@ -211,3 +211,9 @@ a.article-title:hover {
 .todo {
     color: #a4bfbf;
 }
+
+.gield-button {
+    text-align: center;
+    margin: 50px 50px 50px;
+    border: solid 2px;
+}

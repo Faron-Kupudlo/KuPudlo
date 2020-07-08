@@ -15,6 +15,10 @@
 
 
     <body>
+
+        <a class="gield-button" href="{% url 'gielda-nowe' %}" >Dodaj ogłoszenie</a>
+
+
     {% for oglo in gielda_oglo %}
         <article class="media content-section">
           <img class="rounded-circle article-img" src="{{ oglo.autor.profile.image.url }}">
