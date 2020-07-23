@@ -1,10 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "Tablica/base.html" %}
+{% load crispy_forms_tags %}
 
-</body>
-</html>
+{% block filter %}
+<h4>Filtruj wyniki</h4>
+<div class="right-panel-nav">
+    <form method="GET">
+        {{ filter.form|crispy }}
+        <button class="btn btn-outline-info" type="submit">Filtruj</button>
+    </form>
+</div>
+{% endblock %}
+{% block body %}
+
+
+
+    <body>
+
+    <a class="gielda-dodaj" href="{% url 'gielda-nowe' %}">Dodaj ogłoszenie</a>
+
+
+    {% for oglo in gielda_oglo %}
+        <article class="media content-section">
+          <img class="rounded-circle article-img" src="{{ oglo.autor.profile.image.url }}">
+          <div class="media-body">
+            <h2><a class="article-title" href="{% url 'gielda-detal' oglo.id %}">
+                {{ oglo.tytul }}
+            </a></h2>
+            <div class="article-metadata">
+
+              <a class="mr-2" href="{% url 'profil-gielda' oglo.autor.username %}">{{oglo.autor}}</a>
+              <small class="text-muted">{{ oglo.data_dodania|date:"d.m.o" }}</small>
+            </div>
+
+
+            <p class="article-content">
+                <b>Konstrukcja: </b>{{oglo.get_typ_display}}
+                <b>Ilość: </b>{{oglo.ilosc}}
+            </p>
+          </div>
+        </article>
+    {% endfor %}
+
+    {% if is_paginated %}
+
+      {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1"> << </a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}"> < </a>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-5' and num < page_obj.number|add:'5' %}
+          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}"> > </a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}"> >> </a>
+      {% endif %}
+
+    {% endif %}
+
+{% endblock %}

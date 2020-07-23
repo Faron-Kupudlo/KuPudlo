@@ -212,8 +212,22 @@ a.article-title:hover {
     color: #a4bfbf;
 }
 
-.gield-button {
-    text-align: center;
-    margin: 50px 50px 50px;
+.gielda-dodaj {
+    color: #56c8f3;
+    border-radius: 5px;
+    padding: 10px;
     border: solid 2px;
+    margin: 0 50% 20px;
+    display: inline-block;
+    text-align: center;
+    transition: 0.2s;
+}
+
+a.gielda-dodaj:link {
+  text-decoration: none;
+
+}
+a.gielda-dodaj:hover {
+  color: white;
+  background-color: #56c8f3;
 }

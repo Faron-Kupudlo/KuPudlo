@@ -25,7 +25,7 @@ class Gielda_detal(DetailView):
 class Gielda_new(LoginRequiredMixin, CreateView):
     model = Gielda_ogloszenie
     fields = ["tytul", "typ", "opis", "ilosc", "lokalizacja", "cena"]
-    template_name =''
+    template_name ='Gielda/gielda-create.html'
 
     def form_valid(self, form):
         form.instance.autor = self.request.user
