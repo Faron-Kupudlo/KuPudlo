@@ -41,6 +41,7 @@ EMAIL_HOST_PASSWORD = ('pgpxrkjkdpqznbug')
 INSTALLED_APPS = [
     'Tablica.apps.TablicaConfig',
     'users.apps.UsersConfig',
+    'Gielda',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -74,6 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media'
             ],
         },
     },
